@@ -1,0 +1,40 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #191103;
+  padding: 15px;
+}
+
+input {
+  width: 885px;
+  height: 30px;
+  font-size: 19px;
+  padding-left: 5px
+}
+
+.gifThumbnail {
+  padding: 5px;
+}
+
+#inputForm {
+  width: 1040px;
+}
+
+#searchButton {
+  position: relative;
+  width: 120px;
+  height: 36px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+#loadMoreButton {
+  width: 200px;
+  height: 36px;
+  font-size: 20px;
+}
+
+#results {
+  width: 1040px;
+}
