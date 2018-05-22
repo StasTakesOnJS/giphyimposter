@@ -60,31 +60,36 @@ const Search = {
       $("#results").append(a);
     }
   }
-}
+};
 
-let input = $("<input></input>").attr({
-  "id":"searchInput"
-}).on({
-  keypress: function(e) {
-    if (e.which == 13) {
+const Elements = {
+  input: $("<input></input>").attr({
+    "id":"searchInput"
+  }).on({
+    keypress: function(e) {
+      if (e.which == 13) {
+        Search.handleSearch();
+      }
+    }
+  }),
+
+  searchButton: $("<button id=\"searchButton\"></button>").text("Fetch!").on({
+    click: function() {
       Search.handleSearch();
     }
-  }
-});
+  }),
 
-let searchButton = $("<button id=\"searchButton\"></button>").text("Fetch!").on({
-  click: function() {
-    Search.handleSearch();
-  }
-});
+  loadMoreButton: $("<button id=\"loadMoreButton\"></button>").text("Load More GIFs").on("click",() => {
+      Search.search();
+  }),
 
-let loadMoreButton = $("<button id=\"loadMoreButton\"></button>").text("Load More GIFs").on("click",() => {
-    Search.search();
-  });
+  form: $("<div id=\"inputForm\"></div>"),
 
-let form = $("<div id=\"inputForm\"></div>").append(input,searchButton);
+  results: $("<div id=\"results\"></div>")
+}
 
-$("body").append(form,"<br>","<div id=\"results\"></div>","<br>",loadMoreButton);
+//Put together all DOM elements
+$("body").append(Elements.form.append(Elements.input,Elements.searchButton),"<br>",Elements.results,"<br>",Elements.loadMoreButton);
 
 //Render the trending GIFs when loading the app
 Search.prepareURL();
